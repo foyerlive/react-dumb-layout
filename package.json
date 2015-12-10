@@ -1,0 +1,24 @@
+{
+  "name": "react-dumb-layout",
+  "version": "0.1.0",
+  "description": "A react 'container' renderer for managing the rendering of the 'dumb components' made available by your container.",
+  "main": "lib/react-dumb-layout.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foyerlive/react-dumb-layout.git"
+  },
+  "keywords": [
+    "react",
+    "layout",
+    "react-component"
+  ],
+  "author": "James Turle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/foyerlive/react-dumb-layout/issues"
+  },
+  "homepage": "https://github.com/foyerlive/react-dumb-layout"
+}
