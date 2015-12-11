@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./scripts/build.sh",
-    "prepublish": "npm run build"
+    "install": "npm run build"
   },
   "repository": {
     "type": "git",
