@@ -1,6 +1,10 @@
 # react-dumb-layout
-A react 'container' renderer for managing the rendering of the 'dumb components' made available by your container.
+A react 'container' renderer for managing the rendering of the 'dumb components' made available by your container via a JS Object 'structure'.
 
+### Why?
+Basically the only reason I created this little component is so I can control the order/structure things are rendered without using a bunch of IF statements... I need to render different components made available by a container slightly differently in certain circumstances and the functionality provided by CSS order wasn't enough for me.  Using this component I can completely remove certain elements, re-order them, re-nest them etc, easily by only adjusting a parent configuration (structure) object.
+
+## Example
 ````javascript
 import RDL from 'react-dumb-layout';
 
