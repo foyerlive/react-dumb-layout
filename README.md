@@ -12,11 +12,11 @@ render()
 {
   let nodes = {
     name: this.renderName(),
-    gallery: this.renderGallery(),
-    
+    gallery: this.renderGallery()
   }
   
   let structure = {
+    className: "product-container",
     style: {
       border: '2px solid green'
     },
@@ -26,6 +26,7 @@ render()
       "<H1>Dangerously supports RAW HTML</H1>",
       <h2>Supports RAW JSX</h2>,
       {
+        className: "product-misc",
         style: {
           border: '2px solid red'
         },

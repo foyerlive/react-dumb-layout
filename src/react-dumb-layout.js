@@ -3,13 +3,20 @@ import React from 'react';
 class ReactDumbLayout extends React.Component
 {
   static propTypes = {
-    style: React.PropTypes.object,
     nodes: React.PropTypes.object.isRequired,
     structure: React.PropTypes.object.isRequired
   };
 
   render() {
-    const { style, nodes, structure } = this.props;
+    const { nodes, structure } = this.props;
+
+    // Can override styles via the structure provided...
+    let providedStyle = structure.style || {};
+    let style = {...this.props.style, ...providedStyle};
+
+    // Can override styles via the structure provided...
+    let providedClassname = structure.className || "";
+    let className = ( this.props.className || "" ) + " " + providedClassname;
 
     let renderNodes = structure.children.map((child, idx) => {
 
@@ -21,7 +28,7 @@ class ReactDumbLayout extends React.Component
       if (typeof child == 'object' && child['_owner'])
         return <div key={idx}>{child}</div>;
 
-      // Support objects...
+      // Support objects where it just gives it all the ndoes and the remaining structure...
       if (typeof child == 'object')
         return <ReactDumbLayout key={idx} nodes={nodes} structure={child}/>;
 
@@ -32,7 +39,7 @@ class ReactDumbLayout extends React.Component
     });
 
     return (
-      <div style={style}>{renderNodes}</div>
+      <div style={style} className={className}>{renderNodes}</div>
     )
   }
 }
