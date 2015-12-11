@@ -14,6 +14,7 @@ render()
   
   let structure = {
     style: {
+      border: '2px solid green'
     },
     children: [
       "name",
@@ -21,8 +22,13 @@ render()
       "<H1>Dangerously supports RAW HTML</H1>",
       <h2>Supports RAW JSX</h2>,
       {
-        "name", // Can render the same node multiple times...
-        <div>Seriously, I am sure you understand where the name came from...</div>
+        style: {
+          border: '2px solid red'
+        },
+        children: [
+          "name", // Can render the same node multiple times...
+          <div>Seriously, I am sure you understand where the name came from...</div>
+        ]
       }
     ]
   }
