@@ -5,7 +5,8 @@
   "main": "lib/react-dumb-layout.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./scripts/build.sh"
+    "build": "./scripts/build.sh",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
