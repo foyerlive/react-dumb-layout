@@ -4,7 +4,8 @@
   "description": "A react 'container' renderer for managing the rendering of the 'dumb components' made available by your container.",
   "main": "lib/react-dumb-layout.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./scripts/build.sh"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,13 @@
     "layout",
     "react-component"
   ],
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "devDependencies": {
+    "react": "^0.14.0",
+    "babel": "^5.8.23"
+  },
   "author": "James Turle",
   "license": "ISC",
   "bugs": {
