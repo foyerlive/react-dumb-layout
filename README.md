@@ -22,7 +22,7 @@ render()
       <h2>Supports RAW JSX</h2>,
       {
         "name", // Can render the same node multiple times...
-        <div>Seriously, I'm sure you understand where the name came from...</div>
+        <div>Seriously, I am sure you understand where the name came from...</div>
       }
     ]
   }
