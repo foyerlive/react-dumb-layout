@@ -22,15 +22,22 @@ class ReactDumbLayout extends React.Component
 
       // Support node rendering
       if (nodes.hasOwnProperty(child))
-        return <div key={idx}>{nodes[child]}</div>;
+        return React.cloneElement(nodes[child],{key:idx});
 
       // RAW JSX Support too...
       if (typeof child == 'object' && child['_owner'])
         return <div key={idx}>{child}</div>;
 
-      // Support objects where it just gives it all the ndoes and the remaining structure...
+      // Support objects where it just gives it all the nodes and the remaining structure...
       if (typeof child == 'object')
+      {
+        // If an actual node is specified in the child, we'll also try to render that with the rest of the structure...
+        if( child.hasOwnProperty( 'node' ) && nodes.hasOwnProperty( child.node ) )
+        {
+          return React.cloneElement(nodes[child.node],{key:idx},<ReactDumbLayout nodes={nodes} structure={child}/>);
+        }
         return <ReactDumbLayout key={idx} nodes={nodes} structure={child}/>;
+      }
 
       // RAW HTML Support too...
       if (typeof child == 'string')
@@ -39,9 +46,8 @@ class ReactDumbLayout extends React.Component
     });
 
     return (
-      <div style={style} className={className}>{renderNodes}</div>
+        <div style={style} className={className}>{renderNodes}</div>
     )
   }
 }
-
 export default ReactDumbLayout
