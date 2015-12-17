@@ -4,21 +4,14 @@ class ReactDumbLayout extends React.Component
 {
   static propTypes = {
     nodes: React.PropTypes.object.isRequired,
-    structure: React.PropTypes.object.isRequired
+    structure: React.PropTypes.object.isRequired,
+    raw: React.PropTypes.bool
   };
 
-  render() {
-    const { nodes, structure } = this.props;
-
-    // Can override styles via the structure provided...
-    let providedStyle = structure.style || {};
-    let style = {...this.props.style, ...providedStyle};
-
-    // Can override styles via the structure provided...
-    let providedClassname = structure.className || "";
-    let className = ( this.props.className || "" ) + " " + providedClassname;
-
-    let renderNodes = structure.children.map((child, idx) => {
+  renderNodes( structure )
+  {
+    const { nodes } = this.props;
+    return structure.children.map((child, idx) => {
 
       // Support node rendering
       if (nodes.hasOwnProperty(child))
@@ -34,7 +27,7 @@ class ReactDumbLayout extends React.Component
         // If an actual node is specified in the child, we'll also try to render that with the rest of the structure...
         if( child.hasOwnProperty( 'node' ) && nodes.hasOwnProperty( child.node ) )
         {
-          return React.cloneElement(nodes[child.node],{key:idx},<ReactDumbLayout nodes={nodes} structure={child}/>);
+          return React.cloneElement(nodes[child.node],{key:idx},this.renderNodes(child));
         }
         return <ReactDumbLayout key={idx} nodes={nodes} structure={child}/>;
       }
@@ -44,10 +37,24 @@ class ReactDumbLayout extends React.Component
         return <div key={idx} dangerouslySetInnerHTML={{__html: child}}></div>
 
     });
+  }
 
+  render() {
+    const { nodes, structure } = this.props;
+
+    // Can override styles via the structure provided...
+    let providedStyle = structure.style || {};
+    let style = {...this.props.style, ...providedStyle};
+
+    // Can override styles via the structure provided...
+    let providedClassname = structure.className || "";
+    let className = ( this.props.className || "" ) + " " + providedClassname;
+
+    let renderNodes = this.renderNodes( structure );
     return (
         <div style={style} className={className}>{renderNodes}</div>
     )
   }
 }
+
 export default ReactDumbLayout
