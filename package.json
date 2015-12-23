@@ -19,11 +19,11 @@
   ],
   "peerDependencies": {
     "react": "^0.14.0",
-    "babel": "^5.8.23"
+    "babel-cli": "^6.3.17"
   },
   "devDependencies": {
     "react": "^0.14.0",
-    "babel": "^5.8.23"
+    "babel-cli": "^6.3.17"
   },
   "author": "James Turle",
   "license": "ISC",
