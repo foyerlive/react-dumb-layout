@@ -18,12 +18,10 @@
     "react-component"
   ],
   "peerDependencies": {
-    "react": "^0.14.0",
-    "babel-cli": "^6.3.17"
+    "react": "^0.14.0"
   },
   "devDependencies": {
-    "react": "^0.14.0",
-    "babel-cli": "^6.3.17"
+    "react": "^0.14.0"
   },
   "author": "James Turle",
   "license": "ISC",
