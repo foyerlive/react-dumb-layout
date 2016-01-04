@@ -2,4 +2,4 @@
 
 # build ES5 modules to lib
 rm -rf lib
-babel src --out-dir lib
+NODE_ENV=production babel src --out-dir lib
