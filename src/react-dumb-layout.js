@@ -14,7 +14,7 @@ class ReactDumbLayout extends React.Component
 
     // Make sure the structure has children etc...
     if( !structure.hasOwnProperty( 'children' ) && !Array.isArray(structure.children) )
-      return <div>RDL ISSUE</div>;
+      return null;
 
     return structure.children.map((child, idx) => {
 
