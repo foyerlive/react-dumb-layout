@@ -11,6 +11,11 @@ class ReactDumbLayout extends React.Component
   renderNodes( structure )
   {
     const { nodes } = this.props;
+
+    // Make sure the structure has children etc...
+    if( !structure.hasOwnProperty( 'children' ) && !Array.isArray(structure.children) )
+      return <div>RDL ISSUE</div>;
+
     return structure.children.map((child, idx) => {
 
       // Support node rendering
@@ -18,8 +23,8 @@ class ReactDumbLayout extends React.Component
         return React.cloneElement(nodes[child],{key:idx});
 
       // RAW JSX Support too...
-      if (typeof child == 'object' && child['_owner'])
-        return <div key={idx}>{child}</div>;
+      if (typeof child == 'object' && child.hasOwnProperty('$$typeof') && child['$$typeof'].toString() === 'Symbol(react.element)' )
+        return React.cloneElement(child,{key:idx});
 
       // Support objects where it just gives it all the nodes and the remaining structure...
       if (typeof child == 'object')
@@ -40,7 +45,7 @@ class ReactDumbLayout extends React.Component
   }
 
   render() {
-    const { nodes, structure } = this.props;
+    const { structure } = this.props;
 
     // Can override styles via the structure provided...
     let providedStyle = structure.style || {};
@@ -52,7 +57,7 @@ class ReactDumbLayout extends React.Component
 
     let renderNodes = this.renderNodes( structure );
     return (
-        <div style={style} className={className}>{renderNodes}</div>
+      <div style={style} className={className}>{renderNodes}</div>
     )
   }
 }
