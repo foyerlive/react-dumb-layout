@@ -24,7 +24,7 @@ class ReactDumbLayout extends React.Component
 
       // RAW JSX Support too...
       if (typeof child == 'object' && child.hasOwnProperty('$$typeof') && child['$$typeof'].toString() === 'Symbol(react.element)' )
-        return React.cloneElement(child,{key:idx});
+        return React.cloneElement(child,{...nodes,key:idx});
 
       // Support objects where it just gives it all the nodes and the remaining structure...
       if (typeof child == 'object')
