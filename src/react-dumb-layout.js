@@ -55,9 +55,12 @@ class ReactDumbLayout extends React.Component
     let providedClassname = structure.className || "";
     let className = ( this.props.className || "" ) + " " + providedClassname;
 
+    let providedRef = structure.ref || "";
+    let ref = ( this.props.ref || "" ) + " " + providedRef;
+
     let renderNodes = this.renderNodes( structure );
     return (
-      <div style={style} className={className}>{renderNodes}</div>
+      <div style={style} className={className} ref={ref}>{renderNodes}</div>
     )
   }
 }
